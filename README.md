@@ -1,6 +1,13 @@
 # ratpack-jwt-example
 An example of using JSON Web tokens to authenticate with [Ratpack](http://www.ratpack.io).
 
+This example starts a Ratpack application that hosts two endpoints: one secured with JWT, the other not.
+
+## Prerequisites
+This example requires that you have installed the [Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files](http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html).
+
+## Running the Example
+
 ## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/gregwhitaker/ratpack-jwt-example/issues).
 
