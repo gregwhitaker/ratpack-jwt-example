@@ -3,7 +3,7 @@
 
 An example of using JSON Web tokens to authenticate with [Ratpack](http://www.ratpack.io).
 
-This example starts a Ratpack application that hosts two endpoints: one secured with JWT, the other not.
+This example starts a Ratpack application that hosts three endpoints: one secured with JWT as a url parameter, one secured with JWT as an Authorization header, and one that is not secured.
 
 ## Prerequisites
 This example requires that you have installed the [Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files](http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html).
@@ -27,9 +27,15 @@ This example requires that you have installed the [Java Cryptography Extension (
         
 5. Notice that you receive a `401 - Unauthorized` error.
 
-6. Curl the JWT protected endpoint and supply the JWT token with the following command:
+6. Curl the JWT protected endpoint and supply the JWT token:
 
+    If you wish to supply the JWT token as a URL parameter use the following command:
+    
         $ curl -v http://localhost:5050/secure?token={your token}
+        
+    If you wish to supply the JWT token in the Authorization header use the following command:
+    
+        $ curl -v -H "Authorization: Bearer {your token}" http://localhost:5050/secureheader
 
 7. Notice that you now have access to the secure resource and your user information.
 

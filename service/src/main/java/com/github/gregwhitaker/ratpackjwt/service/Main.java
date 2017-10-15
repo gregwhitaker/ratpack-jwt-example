@@ -1,5 +1,6 @@
 package com.github.gregwhitaker.ratpackjwt.service;
 
+import org.pac4j.http.client.direct.HeaderClient;
 import org.pac4j.http.client.direct.ParameterClient;
 import org.pac4j.jwt.config.encryption.EncryptionConfiguration;
 import org.pac4j.jwt.config.encryption.SecretEncryptionConfiguration;
@@ -25,7 +26,13 @@ public class Main {
         final SignatureConfiguration signatureConfiguration = new SecretSignatureConfiguration(secret);
         final EncryptionConfiguration encryptionConfiguration = new SecretEncryptionConfiguration(secret);
         final JwtAuthenticator jwtAuthenticator = new JwtAuthenticator(Arrays.asList(signatureConfiguration), Arrays.asList(encryptionConfiguration));
+
+        // Use this if you are going to pass the JWT as a URL parameter
         final ParameterClient parameterClient = new ParameterClient("token", jwtAuthenticator);
+
+        // Use this if you are going to pass the JWT in the Authorization header
+        final HeaderClient headerClient = new HeaderClient("Authorization", "Bearer ", jwtAuthenticator);
+
         parameterClient.setSupportGetRequest(true);
         parameterClient.setSupportPostRequest(false);
 
@@ -38,7 +45,7 @@ public class Main {
                     b.module(SessionModule.class);
                 }))
                 .handlers(chain -> chain
-                        .all(RatpackPac4j.authenticator(parameterClient))
+                        .all(RatpackPac4j.authenticator(parameterClient, headerClient))
                         .insert(NonSecureEndpoint.class)
                         .insert(SecureEndpoint.class)
                 )
