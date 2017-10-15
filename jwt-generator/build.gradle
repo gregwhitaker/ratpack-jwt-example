@@ -9,19 +9,16 @@ dependencies {
     compile 'org.slf4j:slf4j-simple:1.7.22'
 }
 
-// Token generation shared secret
-ext.sharedSecret = 'kSuZdhba2bXoV5O1rLdsI4yEX1pIAE2k'
-
 // Generates a token with 'read' and 'write' privileges
 task generateReadWrite(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.github.gregwhitaker.ratpackjwt.generator.Main'
-    args = ['john.doe@netifi.com', 'jdoe', 'READ_WRITE', sharedSecret]
+    args = ['john.doe@netifi.com', 'jdoe', 'READ_WRITE', 'kSuZdhba2bXoV5O1rLdsI4yEX1pIAE2k']
 }
 
 // Generates a token with 'read' privileges
 task generateRead(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.github.gregwhitaker.ratpackjwt.generator.Main'
-    args = ['john.doe@netifi.com', 'jdoe', 'READ', sharedSecret]
+    args = ['john.doe@netifi.com', 'jdoe', 'READ', 'kSuZdhba2bXoV5O1rLdsI4yEX1pIAE2k']
 }
