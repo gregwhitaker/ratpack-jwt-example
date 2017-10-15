@@ -8,6 +8,9 @@ import org.pac4j.jwt.config.signature.SecretSignatureConfiguration;
 import org.pac4j.jwt.config.signature.SignatureConfiguration;
 import org.pac4j.jwt.profile.JwtGenerator;
 
+/**
+ * Generates JSON Web Tokens to use for authenticating with the Ratpack service.
+ */
 public class Main {
 
     public static void main(String... args) {
@@ -16,15 +19,15 @@ public class Main {
         String role = args[2];
         String secret = args[3];
 
-        final SignatureConfiguration SIG_CONFIG = new SecretSignatureConfiguration(secret);
-        final EncryptionConfiguration ENC_CONFIG = new SecretEncryptionConfiguration(secret);
+        final SignatureConfiguration signatureConfiguration = new SecretSignatureConfiguration(secret);
+        final EncryptionConfiguration encryptionConfiguration = new SecretEncryptionConfiguration(secret);
 
         CommonProfile profile = new CommonProfile();
         profile.addAttribute(CommonProfileDefinition.EMAIL, email);
         profile.addAttribute(CommonProfileDefinition.DISPLAY_NAME, displayName);
         profile.addRole(role);
 
-        JwtGenerator generator = new JwtGenerator(SIG_CONFIG, ENC_CONFIG);
+        JwtGenerator generator = new JwtGenerator(signatureConfiguration, encryptionConfiguration);
         String jwt = generator.generate(profile);
 
         System.out.println();

@@ -16,12 +16,12 @@ ext.sharedSecret = 'kSuZdhba2bXoV5O1rLdsI4yEX1pIAE2k'
 task generateReadWrite(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.github.gregwhitaker.ratpackjwt.generator.Main'
-    args = ['john.doe@netifi.com', 'jdoe', 'readwrite', sharedSecret]
+    args = ['john.doe@netifi.com', 'jdoe', 'READ_WRITE', sharedSecret]
 }
 
 // Generates a token with 'read' privileges
-task generateReadonly(type: JavaExec) {
+task generateRead(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.github.gregwhitaker.ratpackjwt.generator.Main'
-    args = ['john.doe@netifi.com', 'jdoe', 'read', sharedSecret]
+    args = ['john.doe@netifi.com', 'jdoe', 'READ', sharedSecret]
 }
