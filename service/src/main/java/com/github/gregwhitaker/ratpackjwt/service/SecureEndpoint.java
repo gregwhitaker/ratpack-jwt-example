@@ -32,7 +32,7 @@ public class SecureEndpoint implements Action<Chain> {
                 Map<String, Object> response = new HashMap<>();
                 response.put("message", "This endpoint is protected by JWT");
                 response.put("user", userInfo);
-                
+
                 ctx.render(json(response));
             });
         });
