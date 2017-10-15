@@ -1,7 +1,7 @@
 # ratpack-jwt-example
 [![Build Status](https://travis-ci.org/gregwhitaker/ratpack-jwt-example.svg?branch=master)](https://travis-ci.org/gregwhitaker/ratpack-jwt-example)
 
-An example of using JSON Web tokens to authenticate with [Ratpack](http://www.ratpack.io).
+An example of using [JSON Web tokens](https://jwt.io/introduction/) to authenticate with [Ratpack](http://www.ratpack.io).
 
 This example starts a Ratpack application that hosts three endpoints: one secured with JWT as a url parameter, one secured with JWT as an Authorization header, and one that is not secured.
 
