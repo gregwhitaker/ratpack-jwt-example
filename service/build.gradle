@@ -1,0 +1,26 @@
+plugins {
+    id 'io.ratpack.ratpack-java' version '1.5.0'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+}
+
+dependencies {
+    compile ratpack.dependency("guice")
+    compile 'org.pac4j:pac4j-jwt:2.1.0'
+    compile 'org.pac4j:pac4j-http:2.1.0'
+    compile 'org.pac4j:ratpack-pac4j:2.0.0-SNAPSHOT'
+
+    runtime 'org.slf4j:slf4j-simple:1.7.22'
+}
+
+mainClassName = 'com.github.gregwhitaker.ratpackjwt.service.Main'
+
+run {
+    systemProperty('JWT_SHARED_SECRET', 'kSuZdhba2bXoV5O1rLdsI4yEX1pIAE2k')
+}
