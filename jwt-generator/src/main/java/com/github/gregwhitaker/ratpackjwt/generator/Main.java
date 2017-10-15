@@ -31,6 +31,7 @@ public class Main {
         String jwt = generator.generate(profile);
 
         System.out.println();
-        System.out.println("JWT: " + jwt);
+        System.out.println("Copy the following JWT: ");
+        System.out.println(jwt);
     }
 }
