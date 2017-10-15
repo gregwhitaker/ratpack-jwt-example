@@ -1,5 +1,5 @@
 # ratpack-jwt-example
-An example of using JSON Web tokens to authenticate with [Ratpack](www.ratpack.io).
+An example of using JSON Web tokens to authenticate with [Ratpack](http://www.ratpack.io).
 
 ## Bugs and Feedback
 For bugs, questions and discussions please use the [Github Issues](https://github.com/gregwhitaker/ratpack-jwt-example/issues).
